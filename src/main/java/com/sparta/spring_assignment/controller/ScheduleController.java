@@ -36,16 +36,11 @@ public class ScheduleController {
 
     @GetMapping("/schedule")
     public List<ScheduleResponseDto> getMemos() {
-//        // Map To List
-//        List<ScheduleResponseDto> responseList = memoList.values().stream()
-//                .map(ScheduleResponseDto::new)
-//                .sorted() // 작성일을 기준으로 내림차순으로 정렬
-//                .toList();
-//
-//        return responseList;
         // Map To List
-        List<MemoResponseDto> responseList = memoList.values().stream()
-                .map(MemoResponseDto::new).toList();
+        List<ScheduleResponseDto> responseList = memoList.values().stream()
+                .map(ScheduleResponseDto::new)
+                .sorted() // 작성일을 기준으로 내림차순으로 정렬
+                .toList();
 
         return responseList;
     }
