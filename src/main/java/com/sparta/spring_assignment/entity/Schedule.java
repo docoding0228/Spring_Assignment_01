@@ -4,10 +4,12 @@ import com.sparta.spring_assignment.dto.ScheduleRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+@Table
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,16 +26,15 @@ public class Schedule {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
         this.date = requestDto.getDate();
-        this.id = requestDto.getId();
         this.password = requestDto.getPassword();
     }
 
-    public void update(ScheduleRequestDto requestDto) {
-        this.username = requestDto.getUsername();
-        this.contents = requestDto.getContents();
-        this.date = requestDto.getDate();
-        this.id = requestDto.getId();
-        this.password = requestDto.getPassword();
-        this.title = requestDto.getTitle();
+    public Schedule(long id, String title, String contents, String username, String password, String date) {
+        this.id = id;
+        this.title = title;
+        this.contents = contents;
+        this.username = username;
+        this.password = password;
+        this.date = date;
     }
 }
