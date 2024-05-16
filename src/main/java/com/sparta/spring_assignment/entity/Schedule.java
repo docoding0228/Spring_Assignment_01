@@ -23,7 +23,7 @@ public class Schedule {
         this.title = requestDto.getTitle();
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
-        this.date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        this.date = requestDto.getDate();
         this.id = requestDto.getId();
         this.password = requestDto.getPassword();
     }
@@ -31,7 +31,7 @@ public class Schedule {
     public void update(ScheduleRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
-        this.date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        this.date = requestDto.getDate();
         this.id = requestDto.getId();
         this.password = requestDto.getPassword();
         this.title = requestDto.getTitle();

@@ -36,11 +36,29 @@ public class ScheduleController {
 
     @GetMapping("/schedule")
     public List<ScheduleResponseDto> getMemos() {
+//        // Map To List
+//        List<ScheduleResponseDto> responseList = memoList.values().stream()
+//                .map(ScheduleResponseDto::new)
+//                .sorted() // 작성일을 기준으로 내림차순으로 정렬
+//                .toList();
+//
+//        return responseList;
         // Map To List
-        List<ScheduleResponseDto> responseList = memoList.values().stream()
-                .map(ScheduleResponseDto::new).toList();
+        List<MemoResponseDto> responseList = memoList.values().stream()
+                .map(MemoResponseDto::new).toList();
 
         return responseList;
+    }
+
+    // 특정 일정 조회
+    @GetMapping("/schedule/{id}")
+    public ScheduleResponseDto getMemoById(@PathVariable Long id) {
+        Schedule memo = memoList.get(id);
+        if (memo != null) {
+            return new ScheduleResponseDto(memo);
+        } else {
+            throw new IllegalArgumentException("선택한 ID는 존재하지 않습니다.");
+        }
     }
 
     @PutMapping("/schedule/{id}")
